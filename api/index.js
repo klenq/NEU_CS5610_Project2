@@ -26,7 +26,6 @@ app.use("/api/journals", journalsRouter);
 // Database initialization
 connectDB().catch(console.dir);
 
-// Start server
 const PORT = process.env.PORT || 3000;
 
 // Only listen if not handled by Vercel serverless function
