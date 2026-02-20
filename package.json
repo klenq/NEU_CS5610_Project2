@@ -1,0 +1,31 @@
+{
+  "name": "nextdestination",
+  "version": "1.0.0",
+  "description": "NextDestination - travel planning and journal app",
+  "main": "api/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "node --watch api/index.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "travel",
+    "journal"
+  ],
+  "author": "Yazi Zhang & Jianyu Qiu",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "@eslint/js": "^9.6.0",
+    "prettier": "^3.3.2"
+  }
+}

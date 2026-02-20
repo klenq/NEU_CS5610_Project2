@@ -1,0 +1,193 @@
+< !DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NextDestination - Travel Planner & Journal</title>
+    <meta
+      name="description"
+      content="Manage your travel bucket list and preserve your memories with NextDestination."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/list.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container header-content">
+        <h1 class="logo">Next<span>Destination</span></h1>
+        <nav class="main-nav">
+          <button id="nav-bucketlist" class="nav-btn active">
+            Bucket List
+          </button>
+          <button id="nav-journal" class="nav-btn">Travel Journal</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container main-content">
+      <!-- Stats Section -->
+      <section id="stats-section" class="stats-card">
+        <div class="stat-item">
+          <h3>Planned</h3>
+          <p id="stat-planned">0</p>
+        </div>
+        <div class="stat-item">
+          <h3>Completed</h3>
+          <p id="stat-completed">0</p>
+        </div>
+        <div class="stat-item">
+          <h3>Total Places</h3>
+          <p id="stat-total">0</p>
+        </div>
+      </section>
+
+      <!-- View: Bucket List (Destinations & Discovery) -->
+      <section id="view-bucketlist" class="view-section active">
+        <div class="split-layout">
+          <div class="form-container">
+            <h2 id="form-title">Add New Destination</h2>
+            <form id="destination-form" class="styled-form">
+              <input type="hidden" id="dest-id" />
+
+              <div class="form-group">
+                <label for="dest-name">Destination Name *</label>
+                <input
+                  type="text"
+                  id="dest-name"
+                  required
+                  placeholder="e.g. Kyoto, Japan"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="dest-budget">Estimated Budget ($)</label>
+                <input
+                  type="number"
+                  id="dest-budget"
+                  min="0"
+                  placeholder="e.g. 1500"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="dest-desc">Why do you want to go?</label>
+                <textarea
+                  id="dest-desc"
+                  rows="4"
+                  placeholder="Cherry blossoms and temples..."
+                ></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="btn-submit-dest"
+                >
+                  Save Destination
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary hidden"
+                  id="btn-cancel-edit"
+                >
+                  Cancel Edit
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="list-container">
+            <h2>Your Planned Trips</h2>
+            <div id="destinations-list" class="card-grid">
+              <!-- Dynamically populated by JS -->
+              <div class="loading">Loading destinations...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- View: Travel Journal (Insights & Memories) -->
+      <section id="view-journal" class="view-section hidden">
+        <div class="header-with-actions">
+          <h2>Your Travel Memories</h2>
+        </div>
+
+        <div id="journals-list" class="card-grid journal-grid">
+          <!-- Dynamically populated by JS -->
+          <div class="loading">Loading journals...</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal for Review/Journaling -->
+    <div id="review-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Write a Review</h2>
+        <form id="review-form" class="styled-form">
+          <input type="hidden" id="review-dest-id" />
+
+          <div class="form-group">
+            <label>Rating</label>
+            <div class="star-rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label
+                for="star5"
+                title="5 stars"
+                >★</label
+              >
+              <input type="radio" id="star4" name="rating" value="4" /><label
+                for="star4"
+                title="4 stars"
+                >★</label
+              >
+              <input type="radio" id="star3" name="rating" value="3" /><label
+                for="star3"
+                title="3 stars"
+                >★</label
+              >
+              <input type="radio" id="star2" name="rating" value="2" /><label
+                for="star2"
+                title="2 stars"
+                >★</label
+              >
+              <input type="radio" id="star1" name="rating" value="1" /><label
+                for="star1"
+                title="1 star"
+                >★</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="review-text">Journal Entry</label>
+            <textarea
+              id="review-text"
+              rows="5"
+              required
+              placeholder="What were the highlights of this trip?"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">
+            Save Memory
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts using ES Modules -->
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

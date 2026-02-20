@@ -1,0 +1,172 @@
+/* Lists and Cards Module */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.journal-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  padding: 25px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary-color);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card:hover::before {
+  transform: scaleY(1);
+}
+
+.card.completed-card::before {
+  background: var(--secondary-color);
+  transform: scaleY(1);
+}
+
+h3.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card-budget {
+  display: inline-block;
+  background: rgba(74, 144, 226, 0.1);
+  color: var(--primary-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.card-desc {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  min-height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
+  flex: 1;
+}
+
+.edit-btn {
+  color: var(--text-main);
+  background: #f0f0f0;
+}
+
+.edit-btn:hover {
+  background: #e0e0e0;
+}
+
+.delete-btn {
+  color: var(--accent-color);
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.delete-btn:hover {
+  background: rgba(231, 76, 60, 0.2);
+}
+
+.complete-btn {
+  color: var(--success-color);
+  background: rgba(39, 174, 96, 0.1);
+}
+
+.complete-btn:hover {
+  background: rgba(39, 174, 96, 0.2);
+}
+
+/* Journal Specific Styles */
+.rating-display {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.journal-text {
+  font-style: italic;
+  color: var(--text-main);
+  background: #f9f9f9;
+  padding: 15px;
+  border-left: 3px solid #ddd;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.journal-date {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  display: block;
+}
+
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: var(--border-radius-md);
+  border: 1px dashed #ccc;
+  color: var(--text-light);
+}
+
+.empty-state h3 {
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
