@@ -7,7 +7,7 @@ const router = express.Router();
 // GET all destinations
 router.get("/", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
     const destinations = await db
       .collection("destinations")
       .find({ status: { $ne: "completed" } })
@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 // POST a new destination
 router.post("/", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
     const { name, description, budget } = req.body;
 
     if (!name) {
@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
 // PUT (update) a destination
 router.put("/:id", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
     const { id } = req.params;
     const { name, description, budget } = req.body;
 
@@ -83,7 +83,7 @@ router.put("/:id", async (req, res) => {
 // DELETE a destination
 router.delete("/:id", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
     const { id } = req.params;
 
     const result = await db
@@ -104,7 +104,7 @@ router.delete("/:id", async (req, res) => {
 // PUT (complete) a destination -> moves it to journals conceptually
 router.put("/:id/complete", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
     const { id } = req.params;
 
     const result = await db

@@ -7,7 +7,7 @@ const router = express.Router();
 // GET completed destinations as journals
 router.get("/", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
     const journals = await db
       .collection("destinations")
       .find({ status: "completed" })
@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 // POST to add review and rating to a completed destination
 router.post("/:id/review", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
     const { id } = req.params;
     const { rating, reviewText } = req.body;
 
@@ -52,7 +52,7 @@ router.post("/:id/review", async (req, res) => {
 // GET stats
 router.get("/stats", async (req, res) => {
   try {
-    const db = getDB();
+    const db = await getDB();
 
     // Total planned
     const plannedCount = await db

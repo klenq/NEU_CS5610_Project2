@@ -22,10 +22,10 @@ export const connectDB = async () => {
   }
 };
 
-export const getDB = () => {
+export const getDB = async () => {
   if (!dbConnection) {
-    console.warn("DB not connected yet, trying to connect...");
-    return null;
+    console.warn("DB not connected yet, connecting now...");
+    return await connectDB();
   }
   return dbConnection;
 };
