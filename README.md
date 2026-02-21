@@ -1,5 +1,7 @@
 # NextDestination (NEU CS5610 Project 2)
 
+<img src="https://github.com/klenq/NEU_CS5610_Project2/blob/34535f0e8eb626f7249993b8cf23444075ec7212/img/travel_planning.jpeg?raw=true" alt="NextDestination Thumbnail" width="400"/>
+
 NextDestination is a full-stack web application that helps travelers manage their trip plans and memories.
 
 Core idea: a central place to move from a “dream trip” to a “finished memory.”
