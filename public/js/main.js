@@ -73,7 +73,7 @@ function setupEventListeners() {
         if (confirm("Are you sure you want to delete this trip idea?")) {
           try {
             await api.deleteDestination(id);
-            await loadData();
+            await loadData(); // right now every operation calls this -- maybe just update the affected data? probs easier w/ React
           } catch (err) {
             console.error("Error deleting destination:", err);
           }
@@ -117,7 +117,7 @@ function setupEventListeners() {
       const reviewText = document.getElementById("review-text").value;
 
       const data = {
-        rating: ratingEle ? ratingEle.value : 0,
+        rating: ratingEle ? ratingEle.value : 0, // perhaps have it throw an alert instead of silently defaulting to 0
         reviewText: reviewText,
       };
 
