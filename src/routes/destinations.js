@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
     const { name, description, budget } = req.body;
 
     if (!name) {
-      return res.status(400).json({ error: "Name is required" });
+      return res.status(400).json({ error: "Name is required" }); // stronger validation would be nice! negative budget, invalid types in name
     }
 
     const newDestination = {
@@ -134,7 +134,7 @@ router.put("/:id/complete", async (req, res) => {
       name: dest.name,
       description: dest.description || "",
       budget: dest.budget ?? 0,
-      status: "completed",
+      status: "completed", // consider using an enum instead of a hand-written string
       rating: Number.isFinite(Number(rating))
         ? Math.min(5, Math.max(1, Number(rating)))
         : 0,
